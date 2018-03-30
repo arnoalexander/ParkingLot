@@ -56,4 +56,11 @@ public class ParkingLot {
 		return -1;
 	}
 	
+	public static void leave(int slotNumber) {
+		if (slot[slotNumber] != null) {
+			slot[slotNumber] = null;
+			numberOfEmptySlot++;
+		}
+	}
+	
 }

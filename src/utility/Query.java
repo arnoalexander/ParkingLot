@@ -44,8 +44,13 @@ public class Query {
 			}
 			break;
 		case LEAVE:
-			// TODO : implement this query
-			System.out.println("Parsing " + queryParts[0]);
+			if (queryParts.length >= 2) {
+				int slotNumber = Integer.parseInt(queryParts[1]);
+				if (slotNumber >= 1 && slotNumber <= ParkingLot.getSize()) {
+					ParkingLot.leave(slotNumber);
+					System.out.println("Slot number " + queryParts[1] + " is free");
+				}
+			}
 			break;
 		case STATUS:
 			// TODO : implement this query
