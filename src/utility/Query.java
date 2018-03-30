@@ -1,5 +1,7 @@
 package utility;
 
+import model.ParkingLot;
+
 public class Query {
 	
 	public static final String CREATE = "create_parking_lot";
@@ -21,8 +23,11 @@ public class Query {
 		
 		switch (queryParts[0]) {
 		case CREATE:
-			// TODO : run this query
-			System.out.println("Parsing " + queryParts[0]);
+			if (queryParts.length >= 2) {
+				int size = Integer.parseInt(queryParts[1]);
+				ParkingLot.instantiate(size);
+			}
+			System.out.println(ParkingLot.getSize());
 			break;
 		case PARK:
 			// TODO : run this query
