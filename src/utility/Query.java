@@ -13,6 +13,8 @@ public class Query {
 	public static final String SLOT_NUMBERS_FOR_COLOUR = "slot_numbers_for_cars_with_colour";
 	public static final String SLOT_NUMBER_FOR_REGISTRATION_NUMBER = "slot_number_for_registration_number";
 	
+	private Query() {}
+	
 	public static void process(String query) {
 		String[] queryParts = query.split("\\s+");
 		if (queryParts.length > 0) {
@@ -62,16 +64,67 @@ public class Query {
 			}
 			break;
 		case REGISTRATION_NUMBERS_FOR_COLOUR:
-			// TODO : implement this query
-			System.out.println("Parsing " + queryParts[0]);
+			if (queryParts.length >= 2) {
+				String colour = queryParts[1];
+				boolean found = false;
+				for (int slotNumber = 1; slotNumber <= ParkingLot.getSize(); slotNumber++) {
+					Car car = ParkingLot.getCarAt(slotNumber);
+					if (car != null && colour.equals(car.getColour())) {
+						if (found) {
+							System.out.print(", ");
+						} else {
+							found = true;
+						}
+						System.out.print(car.getRegistrationNumber());
+					}
+				}
+				if (found) {
+					System.out.println("");
+				} else {
+					System.out.println("Not found");
+				}
+			}
 			break;
 		case SLOT_NUMBERS_FOR_COLOUR:
-			// TODO : implement this query
-			System.out.println("Parsing " + queryParts[0]);
+			if (queryParts.length >= 2) {
+				String colour = queryParts[1];
+				boolean found = false;
+				for (int slotNumber = 1; slotNumber <= ParkingLot.getSize(); slotNumber++) {
+					Car car = ParkingLot.getCarAt(slotNumber);
+					if (car != null && colour.equals(car.getColour())) {
+						if (found) {
+							System.out.print(", ");
+						} else {
+							found = true;
+						}
+						System.out.print(slotNumber);
+					}
+				}
+				if (found) {
+					System.out.println("");
+				} else {
+					System.out.println("Not found");
+				}
+			}
 			break;
 		case SLOT_NUMBER_FOR_REGISTRATION_NUMBER:
-			// TODO : implement this query
-			System.out.println("Parsing " + queryParts[0]);
+			if (queryParts.length >= 2) {
+				String registrationNumber = queryParts[1];
+				int slotNumber = 1;
+				boolean found = false;
+				while (slotNumber <= ParkingLot.getSize() && !found) {
+					Car car = ParkingLot.getCarAt(slotNumber);
+					if (car != null && registrationNumber.equals(car.getRegistrationNumber())) {
+						found = true;
+						System.out.println(slotNumber);
+					} else {
+						slotNumber++;
+					}
+				}
+				if (!found) {
+					System.out.println("Not found");
+				}
+			}
 			break;
 		}
 		
