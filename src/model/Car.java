@@ -5,11 +5,6 @@ public class Car {
 	private String registrationNumber;
 	private String colour;
 	
-	public Car() {
-		registrationNumber = "";
-		colour = "";
-	}
-	
 	public Car(String registrationNumber, String colour) {
 		this.registrationNumber = registrationNumber;
 		this.colour = colour;

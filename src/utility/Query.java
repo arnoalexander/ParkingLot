@@ -1,5 +1,6 @@
 package utility;
 
+import model.Car;
 import model.ParkingLot;
 
 public class Query {
@@ -26,31 +27,40 @@ public class Query {
 			if (queryParts.length >= 2) {
 				int size = Integer.parseInt(queryParts[1]);
 				ParkingLot.instantiate(size);
+				System.out.println("Created a parking lot with " + queryParts[1] + " slots");
 			}
-			System.out.println(ParkingLot.getSize());
 			break;
 		case PARK:
-			// TODO : run this query
-			System.out.println("Parsing " + queryParts[0]);
+			if (queryParts.length >= 3) {
+				if (ParkingLot.isFull()) {
+					System.out.println("Sorry, parking lot is full");
+				} else {
+					String registrationNumber = queryParts[1];
+					String colour = queryParts[2];
+					Car car = new Car(registrationNumber, colour);
+					int slotNumber = ParkingLot.park(car);
+					System.out.println("Allocated slot number: " + slotNumber);
+				}
+			}
 			break;
 		case LEAVE:
-			// TODO : run this query
+			// TODO : implement this query
 			System.out.println("Parsing " + queryParts[0]);
 			break;
 		case STATUS:
-			// TODO : run this query
+			// TODO : implement this query
 			System.out.println("Parsing " + queryParts[0]);
 			break;
 		case REGISTRATION_NUMBERS_FOR_COLOUR:
-			// TODO : run this query
+			// TODO : implement this query
 			System.out.println("Parsing " + queryParts[0]);
 			break;
 		case SLOT_NUMBERS_FOR_COLOUR:
-			// TODO : run this query
+			// TODO : implement this query
 			System.out.println("Parsing " + queryParts[0]);
 			break;
 		case SLOT_NUMBER_FOR_REGISTRATION_NUMBER:
-			// TODO : run this query
+			// TODO : implement this query
 			System.out.println("Parsing " + queryParts[0]);
 			break;
 		}
