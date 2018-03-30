@@ -1,8 +1,11 @@
 package main;
 
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
+
+import utility.Query;
 
 public class Main {
 	
@@ -20,7 +23,8 @@ public class Main {
 		}
 		
 		while (scanner.hasNext()) {
-			System.out.println(scanner.nextLine());
+			String query = scanner.nextLine();
+			Query.process(query);
 		}
 	}
 	
