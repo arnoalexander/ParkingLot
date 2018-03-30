@@ -53,8 +53,13 @@ public class Query {
 			}
 			break;
 		case STATUS:
-			// TODO : implement this query
-			System.out.println("Parsing " + queryParts[0]);
+			System.out.println("Slot No\tRegistration No\tColour");
+			for (int slotNumber = 1; slotNumber <= ParkingLot.getSize(); slotNumber++) {
+				Car car = ParkingLot.getCarAt(slotNumber);
+				if (car != null) {
+					System.out.println(slotNumber + "\t" + car.getRegistrationNumber() + "\t" + car.getColour());
+				}
+			}
 			break;
 		case REGISTRATION_NUMBERS_FOR_COLOUR:
 			// TODO : implement this query
