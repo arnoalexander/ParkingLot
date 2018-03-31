@@ -34,13 +34,13 @@ public class Query {
 			break;
 		case PARK:
 			if (queryParts.length >= 3) {
-				if (ParkingLot.isFull()) {
+				if (ParkingLot.getInstance().isFull()) {
 					System.out.println("Sorry, parking lot is full");
 				} else {
 					String registrationNumber = queryParts[1];
 					String colour = queryParts[2];
 					Car car = new Car(registrationNumber, colour);
-					int slotNumber = ParkingLot.park(car);
+					int slotNumber = ParkingLot.getInstance().park(car);
 					System.out.println("Allocated slot number: " + slotNumber);
 				}
 			}
@@ -48,16 +48,16 @@ public class Query {
 		case LEAVE:
 			if (queryParts.length >= 2) {
 				int slotNumber = Integer.parseInt(queryParts[1]);
-				if (slotNumber >= 1 && slotNumber <= ParkingLot.getSize()) {
-					ParkingLot.leave(slotNumber);
+				if (slotNumber >= 1 && slotNumber <= ParkingLot.getInstance().getSize()) {
+					ParkingLot.getInstance().leave(slotNumber);
 					System.out.println("Slot number " + queryParts[1] + " is free");
 				}
 			}
 			break;
 		case STATUS:
 			System.out.println("Slot No\tRegistration No\tColour");
-			for (int slotNumber = 1; slotNumber <= ParkingLot.getSize(); slotNumber++) {
-				Car car = ParkingLot.getCarAt(slotNumber);
+			for (int slotNumber = 1; slotNumber <= ParkingLot.getInstance().getSize(); slotNumber++) {
+				Car car = ParkingLot.getInstance().getCarAt(slotNumber);
 				if (car != null) {
 					System.out.println(slotNumber + "\t" + car.getRegistrationNumber() + "\t" + car.getColour());
 				}
@@ -67,8 +67,8 @@ public class Query {
 			if (queryParts.length >= 2) {
 				String colour = queryParts[1];
 				boolean found = false;
-				for (int slotNumber = 1; slotNumber <= ParkingLot.getSize(); slotNumber++) {
-					Car car = ParkingLot.getCarAt(slotNumber);
+				for (int slotNumber = 1; slotNumber <= ParkingLot.getInstance().getSize(); slotNumber++) {
+					Car car = ParkingLot.getInstance().getCarAt(slotNumber);
 					if (car != null && colour.equals(car.getColour())) {
 						if (found) {
 							System.out.print(", ");
@@ -89,8 +89,8 @@ public class Query {
 			if (queryParts.length >= 2) {
 				String colour = queryParts[1];
 				boolean found = false;
-				for (int slotNumber = 1; slotNumber <= ParkingLot.getSize(); slotNumber++) {
-					Car car = ParkingLot.getCarAt(slotNumber);
+				for (int slotNumber = 1; slotNumber <= ParkingLot.getInstance().getSize(); slotNumber++) {
+					Car car = ParkingLot.getInstance().getCarAt(slotNumber);
 					if (car != null && colour.equals(car.getColour())) {
 						if (found) {
 							System.out.print(", ");
@@ -112,8 +112,8 @@ public class Query {
 				String registrationNumber = queryParts[1];
 				int slotNumber = 1;
 				boolean found = false;
-				while (slotNumber <= ParkingLot.getSize() && !found) {
-					Car car = ParkingLot.getCarAt(slotNumber);
+				while (slotNumber <= ParkingLot.getInstance().getSize() && !found) {
+					Car car = ParkingLot.getInstance().getCarAt(slotNumber);
 					if (car != null && registrationNumber.equals(car.getRegistrationNumber())) {
 						found = true;
 						System.out.println(slotNumber);

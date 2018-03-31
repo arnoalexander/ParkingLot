@@ -4,39 +4,40 @@ package src.model;
 public class ParkingLot {
 	
 	private static ParkingLot instance = new ParkingLot(0);
-	private static Car[] slot;
-	private static int numberOfEmptySlot;
+	private Car[] slot;
+	private int numberOfEmptySlot;
 	
 	private ParkingLot(int size) {
-		instantiate(size);
+		slot = new Car[size + 1];
+		numberOfEmptySlot = size;
 	}
 	
 	public static void instantiate(int size) {
-		slot = new Car[size + 1];
-		numberOfEmptySlot = size;
+		getInstance().slot = new Car[size + 1];
+		getInstance().numberOfEmptySlot = size;
 	}
 
 	public static ParkingLot getInstance() {
 		return instance;
 	}
 	
-	public static int getSize() {
+	public int getSize() {
 		return slot.length - 1;
 	}
 	
-	public static int getNumberOfEmptySlot() {
+	public int getNumberOfEmptySlot() {
 		return numberOfEmptySlot;
 	}
 	
-	public static boolean isFull() {
+	public boolean isFull() {
 		return numberOfEmptySlot == 0;
 	}
 	
-	public static Car getCarAt(int slotNumber) {
+	public Car getCarAt(int slotNumber) {
 		return slot[slotNumber];
 	}
 	
-	public static int getFirstEmptySlotNumber() {
+	public int getFirstEmptySlotNumber() {
 		int result = 1;
 		while (result <= getSize()) {
 			if (getCarAt(result) == null) {
@@ -47,7 +48,7 @@ public class ParkingLot {
 		return -1;
 	}
 	
-	public static int park(Car car) {
+	public int park(Car car) {
 		if (!isFull()) {
 			int slotNumber = getFirstEmptySlotNumber();
 			slot[slotNumber] = car;
@@ -57,7 +58,7 @@ public class ParkingLot {
 		return -1;
 	}
 	
-	public static void leave(int slotNumber) {
+	public void leave(int slotNumber) {
 		if (slot[slotNumber] != null) {
 			slot[slotNumber] = null;
 			numberOfEmptySlot++;
