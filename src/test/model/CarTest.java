@@ -12,6 +12,7 @@ public class CarTest {
 	public void testConstructorColour() {
 		String registrationNumber = "KB-01-UU-1230";
 		String colour = "Red";
+		
 		Car car = new Car(registrationNumber, colour);
 		assertEquals(registrationNumber, car.getRegistrationNumber());
 	}
@@ -20,6 +21,7 @@ public class CarTest {
 	public void testConstructorRegistrationNumber() {
 		String registrationNumber = "KB-01-UU-1230";
 		String colour = "Red";
+		
 		Car car = new Car(registrationNumber, colour);
 		assertEquals(registrationNumber, car.getRegistrationNumber());
 	}
@@ -28,6 +30,7 @@ public class CarTest {
 	public void testSetGetColour() {
 		String colour = "Pink";
 		Car car = new Car("", "");
+		
 		car.setColour(colour);
 		assertEquals(colour, car.getColour());
 	}
@@ -36,6 +39,7 @@ public class CarTest {
 	public void testSetGetRegistrationNumber() {
 		String registrationNumber = "BK-01-AA-9230";
 		Car car = new Car("", "");
+		
 		car.setRegistrationNumber(registrationNumber);
 		assertEquals(registrationNumber, car.getRegistrationNumber());
 	}
