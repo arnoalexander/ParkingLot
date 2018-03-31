@@ -1,4 +1,5 @@
-package model;
+package src.model;
+
 
 public class ParkingLot {
 	

@@ -1,11 +1,11 @@
-package main;
+package src.main;
 
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
-import utility.Query;
+import src.utility.Query;
 
 public class Main {
 	

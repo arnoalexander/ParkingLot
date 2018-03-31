@@ -1,7 +1,7 @@
-package utility;
+package src.utility;
 
-import model.Car;
-import model.ParkingLot;
+import src.model.Car;
+import src.model.ParkingLot;
 
 public class Query {
 	
